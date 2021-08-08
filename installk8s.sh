@@ -1,14 +1,14 @@
 #/bin/bash
 
 echo "     Running script with $(whoami)"
-	sudo apt-get update
+	
 echo "     STEP 1: Disabling Swap"
 	# First diasbale swap
 	sudo swapoff -a
-
 	# And then to disable swap on startup in /etc/fstab
 	sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
-	
+echo "            -> Done"
+
 echo "     STEP 2: Installing apt-transport-https" 
 	apt-get install -y apt-transport-https 1>/dev/null
 	curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add 

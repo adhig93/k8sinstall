@@ -29,11 +29,11 @@ echo "     STEP 5: Starting Docker Deamon and enable Service....."
 	
 echo "     STEP 6: Installing kubenetes master components"
 	echo "            -> Installing kubelet"
-		apt-get install -y kubelet 1>/dev/null
+		apt-get install -y kubelet=1.21.1-00 1>/dev/null
 	echo "            -> Installing kubeadm"
-		apt-get install -y kubeadm 1>/dev/null
+		apt-get install -y kubeadm=1.21.1-00 1>/dev/null
 	echo "            -> Installing kubectl"
-		apt-get install -y kubectl 1>/dev/null
+		apt-get install -y kubectl=1.21.1-00 1>/dev/null
 	echo "            -> Installing kubernetes-cni"
 		apt-get install -y kubernetes-cni 1>/dev/null
 

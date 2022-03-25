@@ -22,13 +22,8 @@ echo "     STEP 4: Installing docker.io"
         apt-get install -y docker.io 1>/dev/null
 
 echo "     STEP 5: Starting Docker Deamon and enable Service....."
-        systemctl start docker 1>/dev/null
-        echo "            -> Started $(docker --version) ...."
-        systemctl enable docker.service 1>/dev/null
-        echo "            -> Enabled ...."
-        echo "{ "exec-opts": ["native.cgroupdriver=systemd"] }" > /etc/docker/daemon.json
-        systemctl daemon-reload
-        systemctl restart docker
+        curl -fsSL https://get.docker.com -o get-docker.sh
+        sh get-docker.sh
 
 echo "     STEP 6: Installing kubenetes master components"
         echo "            -> Installing kubelet"

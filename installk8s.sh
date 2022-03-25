@@ -23,7 +23,13 @@ echo "     STEP 4: Starting Docker Deamon and enable Service....."
         curl -fsSL https://get.docker.com -o get-docker.sh
         sh get-docker.sh 1>/dev/null
 
-echo "     STEP 5: Installing kubenetes master components"
+echo "     STEP 5: C-Group Error Fix and Restarting Components"
+        echo "{ \n \"exec-opts\": [\"native.cgroupdriver=systemd\"]\n}" > /etc/docker/daemon.json
+        systemctl daemon-reload
+        systemctl restart docker
+echo "            -> Done"
+
+echo "     STEP 6: Installing kubenetes master components"
         echo "            -> Installing kubelet"
                 apt-get install -y kubelet 1>/dev/null
         echo "            -> Installing kubeadm"
@@ -32,12 +38,7 @@ echo "     STEP 5: Installing kubenetes master components"
                 apt-get install -y kubectl 1>/dev/null
         echo "            -> Installing kubernetes-cni"
                 apt-get install -y kubernetes-cni 1>/dev/null
-                
-echo "     STEP 6: C-Group Error Fix and Restarting Components"
-        echo -e "{ \n \"exec-opts\": [\"native.cgroupdriver=systemd\"]\n}" > /etc/docker/daemon.json
-        systemctl daemon-reload
-        systemctl restart docker
-        sudo systemctl restart kubelet      
+     
 
 echo "-----------------------------------------------------------"
 echo "  Kubernetes node template is now created "

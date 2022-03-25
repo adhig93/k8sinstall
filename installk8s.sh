@@ -18,14 +18,12 @@ echo "            -> Done"
 echo "     STEP 3: Updating apt"
         apt-get update 1>/dev/null
 echo "            -> Updated ...."
-echo "     STEP 4: Installing docker.io"
-        apt-get install -y docker.io 1>/dev/null
 
-echo "     STEP 5: Starting Docker Deamon and enable Service....."
+echo "     STEP 4: Starting Docker Deamon and enable Service....."
         curl -fsSL https://get.docker.com -o get-docker.sh
         sh get-docker.sh
 
-echo "     STEP 6: Installing kubenetes master components"
+echo "     STEP 5: Installing kubenetes master components"
         echo "            -> Installing kubelet"
                 apt-get install -y kubelet 1>/dev/null
         echo "            -> Installing kubeadm"

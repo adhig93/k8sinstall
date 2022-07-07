@@ -27,17 +27,15 @@ echo "     STEP 5: C-Group Error Fix and Restarting Components"
         echo "{ \n \"exec-opts\": [\"native.cgroupdriver=systemd\"]\n}" > /etc/docker/daemon.json
         systemctl daemon-reload
         systemctl restart docker
-        rm /etc/containerd/config.toml
-        systemctl restart containerd
 echo "            -> Done"
 
 echo "     STEP 6: Installing kubenetes master components"
         echo "            -> Installing kubelet"
-                apt-get install -y kubelet=1.23.4-00 1>/dev/null
+                apt-get install -y kubelet=1.23.8-00 1>/dev/null
         echo "            -> Installing kubeadm"
-                apt-get install -y kubeadm=1.23.4-00 1>/dev/null
+                apt-get install -y kubeadm=1.23.8-00 1>/dev/null
         echo "            -> Installing kubectl"
-                apt-get install -y kubectl=1.23.4-00 1>/dev/null
+                apt-get install -y kubectl=1.23.8-00 1>/dev/null
         echo "            -> Installing kubernetes-cni"
                 apt-get install -y kubernetes-cni 1>/dev/null
      
